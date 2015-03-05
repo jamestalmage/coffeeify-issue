@@ -1,0 +1,27 @@
+{
+  "name": "coffeeify-issue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "browserify -t coffeeify -o bundle.js index.coffee && open ./test.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamestalmage/coffeeify-issue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamestalmage/coffeeify-issue/issues"
+  },
+  "homepage": "https://github.com/jamestalmage/coffeeify-issue",
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "coffeeify": "^1.0.0",
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-open": "^0.3.2",
+    "gulp-rename": "^1.2.0"
+  }
+}
