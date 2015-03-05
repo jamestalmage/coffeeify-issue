@@ -11,25 +11,27 @@ reproduction
 ------------
 
 
-test command line (i.e. `browserify -t coffeeify ...`)
+test command line (i.e. `browserify -t coffeeify index.coffee`)
+
+this uses `index.coffee` as the entry file and works fine
 ```
 npm test
 ```
-this works fine
 
 --------
 
-test using gulp with entry as coffee file.
+test using gulp with `index.coffee` as entry file.
+
+**this does not work**
 ```
 gulp open
 ```
-**this does not work**
 
 --------
 
 test using gulp with a `index.js` entry file that simply `require`s the intended `index.coffee` file.
+
+works fine
 ```
 gulp open2
 ```
-works fine
-
