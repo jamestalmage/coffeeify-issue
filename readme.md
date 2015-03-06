@@ -45,3 +45,22 @@ works fine
 ```
 gulp open-js-entry
 ```
+
+--------
+
+
+via vinyl-transform.
+
+vinyl-transform seems to just not work if you have browserify transforms.
+```
+gulp open-vinyl-transform
+```
+
+--------
+
+via vinyl-source-stream.
+
+works fine.
+```
+gulp open-vinyl-transform
+```
