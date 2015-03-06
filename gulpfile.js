@@ -17,7 +17,7 @@ gulp.task('pure-browserify', ['clean'], function () {
     .bundle()
     .pipe(fs.createWriteStream('./bundle.js'))
 });
-gulp.task('open-pure-browserify', ['pure-browserify'], openTask);
+gulp.task('pure-browserify', ['pure-browserify'], openTask);
 
 
 
@@ -30,7 +30,7 @@ gulp.task('bundle-coffee-entry', ['clean'], function() {
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('./'))
 });
-gulp.task('open-coffee-entry', ['bundle-coffee-entry'], openTask);
+gulp.task('coffee-entry', ['bundle-coffee-entry'], openTask);
 
 
 
@@ -43,7 +43,7 @@ gulp.task('bundle-js-entry', ['clean'], function() {
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('./'))
 });
-gulp.task('open-js-entry', ['bundle-js-entry'], openTask);
+gulp.task('js-entry', ['bundle-js-entry'], openTask);
 
 
 
@@ -60,7 +60,7 @@ gulp.task('bundle-vinyl-transform', ['clean'], function() {
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('.'));
 });
-gulp.task('open-vinyl-transform', ['bundle-vinyl-transform'], openTask);
+gulp.task('vinyl-transform', ['bundle-vinyl-transform'], openTask);
 
 
 
@@ -72,7 +72,7 @@ gulp.task('bundle-vinyl-source-stream', ['clean'], function () {
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('.'));
 });
-gulp.task('open-vinyl-source-stream', ['bundle-vinyl-source-stream'], openTask);
+gulp.task('vinyl-source-stream', ['bundle-vinyl-source-stream'], openTask);
 
 
 

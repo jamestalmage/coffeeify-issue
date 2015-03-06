@@ -11,7 +11,8 @@ reproduction
 ------------
 
 
-via command line (i.e. `browserify -t coffeeify index.coffee`)
+###via command line
+(i.e. `browserify -t coffeeify index.coffee`)
 
 this uses `index.coffee` as the entry file and works fine
 ```
@@ -20,47 +21,51 @@ npm test
 
 --------
 
-via direct browserify api. Forgoes gulp file stream api altogether
-and just pipes to `fs.createWriteStream(...)`
+###via direct browserify api.
+Forgoes gulp file stream api altogether and just pipes to `fs.createWriteStream(...)`
 
 this uses `index.coffee` as the entry file and works fine
 ```
-npm gulp open-pure-browserify
+gulp pure-browserify
 ```
 
 --------
 
-via gulp-browserify with `index.coffee` as entry file.
+###via gulp-browserify with `index.coffee` as entry file.
 
-**this does not work**
+*this does not work*
+gulp-browserify somehow breaks the ability to use `index.coffee` as entry point,
+a `.js` wrappper is required.
 ```
-gulp open-coffee-entry
+gulp coffee-entry
 ```
 
 --------
 
-via gulp-browserify with an `index.js` entry file that simply `require`s the intended `index.coffee` file.
+###via gulp-browserify with an `index.js` entry file
+`index.js` simply `require`s the intended `index.coffee` file.
 
 works fine
 ```
-gulp open-js-entry
+gulp js-entry
 ```
 
 --------
 
 
-via vinyl-transform.
+###via vinyl-transform.
 
-vinyl-transform seems to just not work if you have browserify transforms.
+vinyl-transform seems to just **not** work if you have browserify transforms.
+However it works fine if you have no transforms.
 ```
-gulp open-vinyl-transform
+gulp vinyl-transform
 ```
 
 --------
 
-via vinyl-source-stream.
+###via vinyl-source-stream.
 
 works fine.
 ```
-gulp open-vinyl-transform
+gulp vinyl-source-stream
 ```
