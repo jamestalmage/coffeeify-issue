@@ -1,32 +1,52 @@
 var gulp = require('gulp');
-var browserify = require('gulp-browserify');
+var gBrowserify = require('gulp-browserify');
+var browserify = require('browserify');
 var rename = require('gulp-rename');
 var open = require('gulp-open');
+var clean = require('gulp-clean');
+var fs = require('fs');
 
-gulp.task('bundle', function() {
-  return gulp.src('./index.coffee')
-    .pipe(browserify({
-      transform:['coffeeify']
-    }))
-    .pipe(rename('bundle.js'))
-    .pipe(gulp.dest('./'))
+gulp.task('clean', function(){
+  return gulp.src('./bundle.js', {read: false})
+    .pipe(clean());
 });
 
-gulp.task('open', ['bundle'], function() {
+gulp.task('pure-browserify', ['clean'], function () {
+  return browserify('./index.coffee')
+    .transform('coffeeify')
+    .bundle()
+    .pipe(fs.createWriteStream('./bundle.js'))
+});
+
+gulp.task('open-pure-browserify', ['pure-browserify'], function () {
   return gulp.src('./test.html')
     .pipe(open());
 });
 
-gulp.task('bundle2', function() {
-  return gulp.src('./index.js')
-    .pipe(browserify({
+gulp.task('bundle-coffee-entry', ['clean'], function() {
+  return gulp.src('./index.coffee')
+    .pipe(gBrowserify({
       transform:['coffeeify']
     }))
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('./'))
 });
 
-gulp.task('open2', ['bundle2'], function() {
+gulp.task('open-coffee-entry', ['bundle-coffee-entry'], function() {
+  return gulp.src('./test.html')
+    .pipe(open());
+});
+
+gulp.task('bundle-js-entry', ['clean'], function() {
+  return gulp.src('./index.js')
+    .pipe(gBrowserify({
+      transform:['coffeeify']
+    }))
+    .pipe(rename('bundle.js'))
+    .pipe(gulp.dest('./'))
+});
+
+gulp.task('open-js-entry', ['bundle-js-entry'], function() {
   return gulp.src('./test.html')
     .pipe(open());
 });

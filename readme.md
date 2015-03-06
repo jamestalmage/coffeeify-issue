@@ -11,7 +11,7 @@ reproduction
 ------------
 
 
-test command line (i.e. `browserify -t coffeeify index.coffee`)
+via command line (i.e. `browserify -t coffeeify index.coffee`)
 
 this uses `index.coffee` as the entry file and works fine
 ```
@@ -20,18 +20,28 @@ npm test
 
 --------
 
-test using gulp with `index.coffee` as entry file.
+via direct browserify api. Forgoes gulp file stream api altogether
+and just pipes to `fs.createWriteStream(...)`
 
-**this does not work**
+this uses `index.coffee` as the entry file and works fine
 ```
-gulp open
+npm gulp open-pure-browserify
 ```
 
 --------
 
-test using gulp with a `index.js` entry file that simply `require`s the intended `index.coffee` file.
+via gulp-browserify with `index.coffee` as entry file.
+
+**this does not work**
+```
+gulp open-coffee-entry
+```
+
+--------
+
+via gulp-browserify with an `index.js` entry file that simply `require`s the intended `index.coffee` file.
 
 works fine
 ```
-gulp open2
+gulp open-js-entry
 ```
