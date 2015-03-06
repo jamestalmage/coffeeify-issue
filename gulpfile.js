@@ -9,6 +9,8 @@ var source = require('vinyl-source-stream');
 var fs = require('fs');
 
 
+
+
 gulp.task('pure-browserify', ['clean'], function () {
   return browserify('./index.coffee')
     .transform('coffeeify')
@@ -16,6 +18,9 @@ gulp.task('pure-browserify', ['clean'], function () {
     .pipe(fs.createWriteStream('./bundle.js'))
 });
 gulp.task('open-pure-browserify', ['pure-browserify'], openTask);
+
+
+
 
 gulp.task('bundle-coffee-entry', ['clean'], function() {
   return gulp.src('./index.coffee')
@@ -25,8 +30,10 @@ gulp.task('bundle-coffee-entry', ['clean'], function() {
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('./'))
 });
-
 gulp.task('open-coffee-entry', ['bundle-coffee-entry'], openTask);
+
+
+
 
 gulp.task('bundle-js-entry', ['clean'], function() {
   return gulp.src('./index.js')
@@ -37,6 +44,9 @@ gulp.task('bundle-js-entry', ['clean'], function() {
     .pipe(gulp.dest('./'))
 });
 gulp.task('open-js-entry', ['bundle-js-entry'], openTask);
+
+
+
 
 gulp.task('bundle-vinyl-transform', ['clean'], function() {
   var browserified = transform(function(filename){
@@ -52,6 +62,9 @@ gulp.task('bundle-vinyl-transform', ['clean'], function() {
 });
 gulp.task('open-vinyl-transform', ['bundle-vinyl-transform'], openTask);
 
+
+
+
 gulp.task('bundle-vinyl-source-stream', ['clean'], function () {
   return browserify('./index.coffee')
     .transform('coffeeify')
@@ -60,6 +73,8 @@ gulp.task('bundle-vinyl-source-stream', ['clean'], function () {
     .pipe(gulp.dest('.'));
 });
 gulp.task('open-vinyl-source-stream', ['bundle-vinyl-source-stream'], openTask);
+
+
 
 
 gulp.task('clean', function(){
